@@ -53,9 +53,9 @@ const Dashboard = ({
         </Fragment>
       ) : (
         <Fragment>
-          <p>You have not yet setup a profile, please add some info</p>
+          <p>Welcome to Our Wedding Story. Let's begin by entering a little about yourself!</p>
           <Link to="/create-profile" className="btn btn-primary my-1">
-            Create Profile
+            Say Hello
           </Link>
         </Fragment>
       )}
