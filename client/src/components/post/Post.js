@@ -2,11 +2,11 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
-import PostItem from '../posts/PostItem';
-import CommentForm from '../post/CommentForm';
-import CommentItem from '../post/CommentItem';
-import { getPost } from '../../actions/post';
+import Spinner from 'components/layout/Spinner';
+import PostItem from 'components/posts/PostItem';
+import CommentForm from 'components/post/CommentForm';
+import CommentItem from 'components/post/CommentItem';
+import { getPost } from 'actions/post';
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {

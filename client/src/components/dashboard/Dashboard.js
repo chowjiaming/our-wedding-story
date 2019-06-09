@@ -2,9 +2,9 @@ import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
-import DashboardActions from './DashboardActions';
-import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import Spinner from 'components/layout/Spinner';
+import DashboardActions from 'components/dashboard/DashboardActions';
+import { getCurrentProfile, deleteAccount } from 'actions/profile';
 
 const Dashboard = ({
   getCurrentProfile,
