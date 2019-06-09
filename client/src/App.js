@@ -11,6 +11,7 @@ import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 
 import "./App.css";
+import "./bootstrap.min.css";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
