@@ -2,6 +2,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+
+import FileUpload from "components/upload/FileUpload";
 import { createProfile, getCurrentProfile } from "actions/profile";
 
 const EditProfile = ({
@@ -48,15 +50,17 @@ const EditProfile = ({
     <Fragment>
       <h1 className="large text-primary">Edit Your Profile</h1>
       <p className="lead">
-        <i className="fas fa-user" /> Let's get some information to make your
-        profile stand out
+        <i className="fas fa-user" /> Let's add a profile picture
       </p>
       <small>* = required field</small>
+      <FileUpload />
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <textarea
             placeholder="A short bio of yourself"
             name="bio"
+            rows="4"
+            cols="50"
             value={bio}
             onChange={e => onChange(e)}
           />
