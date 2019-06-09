@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Experience from './Experience';
 import PostItem from "components/posts/PostItem";
 import PostForm from "components/posts/PostForm";
 import Spinner from "components/layout/Spinner";
@@ -35,6 +36,7 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
+          <Experience experience={profile.experience} />
           <div className="my-2">
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
               <i className="fas fa-user-minus" /> Delete My Account
@@ -53,7 +55,10 @@ const Dashboard = ({
         </Fragment>
       ) : (
         <Fragment>
-          <p>Welcome to Our Wedding Story. Let's begin by entering a little about yourself!</p>
+          <p>
+            Welcome to Our Wedding Story. Let's begin by entering a little about
+            yourself!
+          </p>
           <Link to="/create-profile" className="btn btn-primary my-1">
             Say Hello
           </Link>

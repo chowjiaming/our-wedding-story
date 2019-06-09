@@ -10,6 +10,7 @@ router.post("/", auth, async (req, res) => {
   if (req.files === null)
     return res.status(400).json({ msg: "No file uploaded" });
   const file = req.files.file;
+  file.name = file.name.replace(/\s+/g, '');
   await file.mv(
     `${__dirname}/../../public/users/${req.user.id}/pictures/${file.name}`,
     err => {

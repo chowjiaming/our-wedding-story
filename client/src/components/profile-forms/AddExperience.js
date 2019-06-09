@@ -6,28 +6,28 @@ import { addExperience } from "actions/profile";
 
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
-    company: "",
-    title: "",
+    name: "",
+    background: "",
     location: "",
     from: "",
     to: "",
-    current: false,
-    description: ""
+    openInvite: false,
+    notes: ""
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
-  const { company, title, location, from, to, current, description } = formData;
+  const { name, background, location, from, to, openInvite, notes } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add An Experience</h1>
+      <h1 className="large text-primary">Add a Wedding Date</h1>
       <p className="lead">
-        <i className="fas fa-code-branch" /> Add any developer/programming
-        positions that you have had in the past
+        <i className="fas fa-code-branch" /> Introduce the couple and inspire
+        your friends to add to their story!
       </p>
       <small>* = required field</small>
       <form
@@ -40,9 +40,9 @@ const AddExperience = ({ addExperience, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Job Title"
-            name="title"
-            value={title}
+            placeholder="* Wedding Name"
+            name="name"
+            value={name}
             onChange={e => onChange(e)}
             required
           />
@@ -50,9 +50,9 @@ const AddExperience = ({ addExperience, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Company"
-            name="company"
-            value={company}
+            placeholder="* How do you know them?"
+            name="background"
+            value={background}
             onChange={e => onChange(e)}
             required
           />
@@ -79,15 +79,15 @@ const AddExperience = ({ addExperience, history }) => {
           <p>
             <input
               type="checkbox"
-              name="current"
-              checked={current}
-              value={current}
+              name="openInvite"
+              checked={openInvite}
+              value={openInvite}
               onChange={() => {
-                setFormData({ ...formData, current: !current });
+                setFormData({ ...formData, openInvite: !openInvite });
                 toggleDisabled(!toDateDisabled);
               }}
             />{" "}
-            Current Job
+            Open Invite
           </p>
         </div>
         <div className="form-group">
@@ -102,11 +102,11 @@ const AddExperience = ({ addExperience, history }) => {
         </div>
         <div className="form-group">
           <textarea
-            name="description"
+            name="notes"
             cols="30"
             rows="5"
-            placeholder="Job Description"
-            value={description}
+            placeholder="Notes"
+            value={notes}
             onChange={e => onChange(e)}
           />
         </div>
