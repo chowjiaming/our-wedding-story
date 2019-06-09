@@ -1,11 +1,11 @@
-import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Spinner from 'components/layout/Spinner';
-import ProfileTop from 'components/profile/ProfileTop';
-import ProfileAbout from 'components/profile/ProfileAbout';
-import { getProfileById } from 'actions/profile';
+import React, { Fragment, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import Spinner from "components/layout/Spinner";
+import ProfileTop from "components/profile/ProfileTop";
+import ProfileAbout from "components/profile/ProfileAbout";
+import { getProfileById } from "actions/profile";
 
 const Profile = ({
   getProfileById,
@@ -23,17 +23,17 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to='/profiles' className='btn btn-light'>
+          <Link to="/profiles" className="btn btn-light">
             Back To Profiles
           </Link>
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
-              <Link to='/edit-profile' className='btn btn-dark'>
+              <Link to="/edit-profile" className="btn btn-dark">
                 Edit Profile
               </Link>
             )}
-          <div className='profile-grid my-1'>
+          <div className="profile-grid my-1">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
           </div>
