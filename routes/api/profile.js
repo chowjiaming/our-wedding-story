@@ -7,7 +7,7 @@ const { check, validationResult } = require("express-validator/check");
 
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
-const Post = require("../../models/Post");
+const Story = require("../../models/Story");
 
 // @route    GET api/profile/me
 // @desc     Get openInvite users profile
@@ -30,7 +30,7 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
-// @route    POST api/profile
+// @route    STORY api/profile
 // @desc     Create or update user profile
 // @access   Private
 router.post(
@@ -116,12 +116,12 @@ router.get("/user/:user_id", async (req, res) => {
 });
 
 // @route    DELETE api/profile
-// @desc     Delete profile, user & posts
+// @desc     Delete profile, user & stories
 // @access   Private
 router.delete("/", auth, async (req, res) => {
   try {
-    // Remove user posts
-    await Post.deleteMany({ user: req.user.id });
+    // Remove user stories
+    await Story.deleteMany({ user: req.user.id });
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     // Remove user

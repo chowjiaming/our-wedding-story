@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addPost } from "actions/post";
+import { addStory } from "actions/story";
 
-const PostForm = ({ addPost }) => {
+const StoryForm = ({ addStory }) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="post-form">
+    <div className="story-form">
       <div className="bg-primary p">
         <h3>Say Something...</h3>
       </div>
@@ -15,7 +15,7 @@ const PostForm = ({ addPost }) => {
         className="form my-1"
         onSubmit={e => {
           e.preventDefault();
-          addPost({ text });
+          addStory({ text });
           setText("");
         }}
       >
@@ -23,7 +23,7 @@ const PostForm = ({ addPost }) => {
           name="text"
           cols="30"
           rows="5"
-          placeholder="Create a post"
+          placeholder="Create a story"
           value={text}
           onChange={e => setText(e.target.value)}
           required
@@ -34,11 +34,11 @@ const PostForm = ({ addPost }) => {
   );
 };
 
-PostForm.propTypes = {
-  addPost: PropTypes.func.isRequired
+StoryForm.propTypes = {
+  addStory: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { addPost }
-)(PostForm);
+  { addStory }
+)(StoryForm);

@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
-import { addLike, removeLike, deletePost } from "actions/post";
+import { addLike, removeLike, deleteStory } from "actions/story";
 
-const PostItem = ({
+const StoryItem = ({
   addLike,
   removeLike,
-  deletePost,
+  deleteStory,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  story: { _id, text, name, avatar, user, likes, comments, date },
   showActions
 }) => (
-  <div className="post bg-white p-1 my-1">
+  <div className="story bg-white p-1 my-1">
     <div>
       <Link to={`/profile/${user}`}>
         <img className="round-img" src={avatar} alt="" />
@@ -22,8 +22,8 @@ const PostItem = ({
     </div>
     <div>
       <p className="my-1">{text}</p>
-      <p className="post-date">
-        Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
+      <p className="story-date">
+        Storyed on <Moment format="YYYY/MM/DD">{date}</Moment>
       </p>
 
       {showActions && (
@@ -43,7 +43,7 @@ const PostItem = ({
           >
             <i className="fas fa-thumbs-down" />
           </button>
-          <Link to={`/posts/${_id}`} className="btn btn-primary">
+          <Link to={`/stories/${_id}`} className="btn btn-primary">
             Discussion{" "}
             {comments.length > 0 && (
               <span className="comment-count">{comments.length}</span>
@@ -51,7 +51,7 @@ const PostItem = ({
           </Link>
           {!auth.loading && user === auth.user._id && (
             <button
-              onClick={() => deletePost(_id)}
+              onClick={() => deleteStory(_id)}
               type="button"
               className="btn btn-danger"
             >
@@ -64,16 +64,16 @@ const PostItem = ({
   </div>
 );
 
-PostItem.defaultProps = {
+StoryItem.defaultProps = {
   showActions: true
 };
 
-PostItem.propTypes = {
-  post: PropTypes.object.isRequired,
+StoryItem.propTypes = {
+  story: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired
+  deleteStory: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -82,5 +82,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addLike, removeLike, deletePost }
-)(PostItem);
+  { addLike, removeLike, deleteStory }
+)(StoryItem);

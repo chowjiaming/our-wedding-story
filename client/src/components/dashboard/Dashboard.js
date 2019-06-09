@@ -3,27 +3,27 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Guestbook from "components/dashboard/Guestbook";
-import PostItem from "components/posts/PostItem";
-import PostForm from "components/posts/PostForm";
+import StoryItem from "components/stories/StoryItem";
+import StoryForm from "components/stories/StoryForm";
 import Spinner from "components/layout/Spinner";
 import DashboardActions from "components/dashboard/DashboardActions";
 import { getCurrentProfile, deleteAccount } from "actions/profile";
-import { getCurrentUserPosts } from "actions/post";
+import { getCurrentUserStories } from "actions/story";
 
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
   auth: { user },
   profile: { profile, loading },
-  getCurrentUserPosts,
-  post: { posts }
+  getCurrentUserStories,
+  story: { stories }
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
   useEffect(() => {
-    getCurrentUserPosts();
-  }, [getCurrentUserPosts]);
+    getCurrentUserStories();
+  }, [getCurrentUserStories]);
 
   return loading && profile === null ? (
     <Spinner />
@@ -46,10 +46,10 @@ const Dashboard = ({
           <p className="lead">
             <i className="fas fa-user" /> Add your Wedding Story Here:
           </p>
-          <PostForm />
-          <div className="posts">
-            {posts.map(post => (
-              <PostItem key={post._id} post={post} />
+          <StoryForm />
+          <div className="stories">
+            {stories.map(story => (
+              <StoryItem key={story._id} story={story} />
             ))}
           </div>
         </Fragment>
@@ -70,20 +70,20 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
-  getCurrentUserPosts: PropTypes.func.isRequired,
+  getCurrentUserStories: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired
+  story: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
   profile: state.profile,
-  post: state.post
+  story: state.story
 });
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, getCurrentUserPosts, deleteAccount }
+  { getCurrentProfile, getCurrentUserStories, deleteAccount }
 )(Dashboard);

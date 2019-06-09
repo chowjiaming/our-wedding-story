@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PostSchema = new Schema({
+const StorySchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: "users"
@@ -52,4 +52,4 @@ const PostSchema = new Schema({
   }
 });
 
-module.exports = Post = mongoose.model("post", PostSchema);
+module.exports = Story = mongoose.model("story", StorySchema);

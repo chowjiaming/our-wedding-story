@@ -1,17 +1,17 @@
 import {
-  GET_POSTS,
-  POST_ERROR,
+  GET_STORIES,
+  STORY_ERROR,
   UPDATE_LIKES,
-  DELETE_POST,
-  ADD_POST,
-  GET_POST,
+  DELETE_STORY,
+  ADD_STORY,
+  GET_STORY,
   ADD_COMMENT,
   REMOVE_COMMENT
 } from "actions/types";
 
 const initialState = {
-  posts: [],
-  post: null,
+  stories: [],
+  story: null,
   loading: true,
   error: {}
 };
@@ -20,31 +20,31 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_POSTS:
+    case GET_STORIES:
       return {
         ...state,
-        posts: payload,
+        stories: payload,
         loading: false
       };
-    case GET_POST:
+    case GET_STORY:
       return {
         ...state,
-        post: payload,
+        story: payload,
         loading: false
       };
-    case ADD_POST:
+    case ADD_STORY:
       return {
         ...state,
-        posts: [payload, ...state.posts],
+        stories: [payload, ...state.stories],
         loading: false
       };
-    case DELETE_POST:
+    case DELETE_STORY:
       return {
         ...state,
-        posts: state.posts.filter(post => post._id !== payload),
+        stories: state.stories.filter(story => story._id !== payload),
         loading: false
       };
-    case POST_ERROR:
+    case STORY_ERROR:
       return {
         ...state,
         error: payload,
@@ -53,23 +53,23 @@ export default function(state = initialState, action) {
     case UPDATE_LIKES:
       return {
         ...state,
-        posts: state.posts.map(post =>
-          post._id === payload.id ? { ...post, likes: payload.likes } : post
+        stories: state.stories.map(story =>
+          story._id === payload.id ? { ...story, likes: payload.likes } : story
         ),
         loading: false
       };
     case ADD_COMMENT:
       return {
         ...state,
-        post: { ...state.post, comments: payload },
+        story: { ...state.story, comments: payload },
         loading: false
       };
     case REMOVE_COMMENT:
       return {
         ...state,
-        post: {
-          ...state.post,
-          comments: state.post.comments.filter(
+        story: {
+          ...state.story,
+          comments: state.story.comments.filter(
             comment => comment._id !== payload
           )
         },

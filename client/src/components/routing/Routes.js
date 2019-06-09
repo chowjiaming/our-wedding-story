@@ -9,8 +9,8 @@ import EditProfile from "components/profile-forms/EditProfile";
 import AddExperience from "components/profile-forms/AddExperience";
 import Profiles from "components/profiles/Profiles";
 import Profile from "components/profile/Profile";
-import Posts from "components/posts/Posts";
-import Post from "components/post/Post";
+import Stories from "components/stories/Stories";
+import Story from "components/story/Story";
 import NotFound from "components/layout/NotFound";
 import PrivateRoute from "components/routing/PrivateRoute";
 
@@ -27,8 +27,8 @@ const Routes = () => {
         <PrivateRoute exact path="/create-profile" component={CreateProfile} />
         <PrivateRoute exact path="/edit-profile" component={EditProfile} />
         <PrivateRoute exact path="/add-guestbook" component={AddExperience} />
-        <PrivateRoute exact path="/posts" component={Posts} />
-        <PrivateRoute exact path="/posts/:id" component={Post} />
+        <PrivateRoute exact path="/stories" component={Stories} />
+        <PrivateRoute exact path="/stories/:id" component={Story} />
         <Route component={NotFound} />
       </Switch>
     </section>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addComment } from "actions/post";
+import { addComment } from "actions/story";
 
-const CommentForm = ({ postId, addComment }) => {
+const CommentForm = ({ storyId, addComment }) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="post-form">
+    <div className="story-form">
       <div className="bg-primary p">
         <h3>Leave a Memory</h3>
       </div>
@@ -15,7 +15,7 @@ const CommentForm = ({ postId, addComment }) => {
         className="form my-1"
         onSubmit={e => {
           e.preventDefault();
-          addComment(postId, { text });
+          addComment(storyId, { text });
           setText("");
         }}
       >
