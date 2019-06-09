@@ -2,19 +2,27 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import PostItem from "components/posts/PostItem";
+import PostForm from "components/posts/PostForm";
 import Spinner from "components/layout/Spinner";
 import DashboardActions from "components/dashboard/DashboardActions";
 import { getCurrentProfile, deleteAccount } from "actions/profile";
+import { getCurrentUserPosts } from "actions/post";
 
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
   auth: { user },
-  profile: { profile, loading }
+  profile: { profile, loading },
+  getCurrentUserPosts,
+  post: { posts }
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
+  useEffect(() => {
+    getCurrentUserPosts();
+  }, [getCurrentUserPosts]);
 
   return loading && profile === null ? (
     <Spinner />
@@ -33,6 +41,16 @@ const Dashboard = ({
               <i className="fas fa-user-minus" /> Delete My Account
             </button>
           </div>
+          <h1 className="large text-primary">Your Wedding Stories</h1>
+          <p className="lead">
+            <i className="fas fa-user" /> Add your Wedding Story Here:
+          </p>
+          <PostForm />
+          <div className="posts">
+            {posts.map(post => (
+              <PostItem key={post._id} post={post} />
+            ))}
+          </div>
         </Fragment>
       ) : (
         <Fragment>
@@ -48,17 +66,20 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  getCurrentUserPosts: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
+  post: state.post
 });
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, deleteAccount }
+  { getCurrentProfile, getCurrentUserPosts, deleteAccount }
 )(Dashboard);
