@@ -8,7 +8,7 @@ const ProfileSchema = new mongoose.Schema({
   bio: {
     type: String
   },
-  experience: [
+  guestbook: [
     {
       name: {
         type: String,

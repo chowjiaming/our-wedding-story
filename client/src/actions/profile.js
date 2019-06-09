@@ -7,7 +7,7 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   CLEAR_PROFILE,
-  ACCOUNT_DELETED,
+  ACCOUNT_DELETED
 } from "actions/types";
 
 // Get current users profile
@@ -102,8 +102,8 @@ export const createProfile = (
   }
 };
 
-// Add Experience
-export const addExperience = (formData, history) => async dispatch => {
+// Add Guestbook
+export const addGuestbook = (formData, history) => async dispatch => {
   try {
     const config = {
       headers: {
@@ -111,14 +111,14 @@ export const addExperience = (formData, history) => async dispatch => {
       }
     };
 
-    const res = await axios.put("/api/profile/experiences", formData, config);
+    const res = await axios.put("/api/profile/guestbooks", formData, config);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
     });
 
-    dispatch(setAlert("Experience Added", "success"));
+    dispatch(setAlert("Guestbook Added", "success"));
 
     history.push("/dashboard");
   } catch (err) {
@@ -135,17 +135,17 @@ export const addExperience = (formData, history) => async dispatch => {
   }
 };
 
-// Delete experience
-export const deleteExperience = id => async dispatch => {
+// Delete guestbook
+export const deleteGuestbook = id => async dispatch => {
   try {
-    const res = await axios.delete(`/api/profile/experience/${id}`);
+    const res = await axios.delete(`/api/profile/guestbook/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
     });
 
-    dispatch(setAlert("Experience Removed", "success"));
+    dispatch(setAlert("Guestbook Removed", "success"));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

@@ -134,11 +134,11 @@ router.delete("/", auth, async (req, res) => {
   }
 });
 
-// @route    PUT api/profile/experiences
-// @desc     Add profile experience
+// @route    PUT api/profile/guestbooks
+// @desc     Add profile guestbook
 // @access   Private
 router.put(
-  "/experiences",
+  "/guestbooks",
   [
     auth,
     [
@@ -161,7 +161,7 @@ router.put(
   ],
   async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) 
+    if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
     const {
       name,
@@ -183,7 +183,7 @@ router.put(
     };
     try {
       const profile = await Profile.findOne({ user: req.user.id });
-      profile.experience.unshift(newExp);
+      profile.guestbook.unshift(newExp);
       await profile.save();
       res.json(profile);
     } catch (err) {
@@ -193,17 +193,17 @@ router.put(
   }
 );
 
-// @route    DELETE api/profile/experience/:exp_id
-// @desc     Delete experience from profile
+// @route    DELETE api/profile/guestbook/:exp_id
+// @desc     Delete guestbook from profile
 // @access   Private
-router.delete("/experience/:exp_id", auth, async (req, res) => {
+router.delete("/guestbook/:exp_id", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
     // Get remove index
-    const removeIndex = profile.experience
+    const removeIndex = profile.guestbook
       .map(item => item.id)
       .indexOf(req.params.exp_id);
-    profile.experience.splice(removeIndex, 1);
+    profile.guestbook.splice(removeIndex, 1);
     await profile.save();
     res.json(profile);
   } catch (err) {

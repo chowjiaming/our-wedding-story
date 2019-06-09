@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addExperience } from "actions/profile";
+import { addGuestbook } from "actions/profile";
 
-const AddExperience = ({ addExperience, history }) => {
+const AddExperience = ({ addGuestbook, history }) => {
   const [formData, setFormData] = useState({
     name: "",
     background: "",
@@ -34,7 +34,7 @@ const AddExperience = ({ addExperience, history }) => {
         className="form"
         onSubmit={e => {
           e.preventDefault();
-          addExperience(formData, history);
+          addGuestbook(formData, history);
         }}
       >
         <div className="form-group">
@@ -120,10 +120,10 @@ const AddExperience = ({ addExperience, history }) => {
 };
 
 AddExperience.propTypes = {
-  addExperience: PropTypes.func.isRequired
+  addGuestbook: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { addExperience }
+  { addGuestbook }
 )(withRouter(AddExperience));

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Experience from './Experience';
+import Guestbook from "components/dashboard/Guestbook";
 import PostItem from "components/posts/PostItem";
 import PostForm from "components/posts/PostForm";
 import Spinner from "components/layout/Spinner";
@@ -36,7 +36,7 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          <Experience experience={profile.experience} />
+          <Guestbook guestbook={profile.guestbook} />
           <div className="my-2">
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
               <i className="fas fa-user-minus" /> Delete My Account
