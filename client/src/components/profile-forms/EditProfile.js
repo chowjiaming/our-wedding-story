@@ -64,7 +64,7 @@ const EditProfile = ({
             value={bio}
             onChange={e => onChange(e)}
           />
-          <small className="form-text">Tell us a little about yourself</small>
+          <small className="form-text">You can edit your bio here</small>
         </div>
 
         <div className="my-2">
