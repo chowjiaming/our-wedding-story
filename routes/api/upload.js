@@ -12,7 +12,7 @@ router.post("/", auth, async (req, res) => {
   const file = req.files.file;
   file.name = file.name.replace(/\s+/g, "");
   await file.mv(
-    `${__dirname}/../../client/public/users/${req.user.id}/pictures/${file.name}`,
+    `${__dirname}/../../client/build/users/${req.user.id}/pictures/${file.name}`,
     err => {
       if (err) {
         console.error(err);

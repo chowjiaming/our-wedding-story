@@ -52,7 +52,7 @@ router.post(
       await user
         .save()
         .then(user => {
-          const dir = `./public/users/${user.id}/pictures`;
+          const dir = `${__dirname}/../../client/build/users/${user.id}/pictures`;
           fs.ensureDir(dir)
             .then(userDir => {
               console.log(`User folder ${userDir} was successfully created.`);
