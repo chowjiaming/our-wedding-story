@@ -21,7 +21,7 @@ router.post("/", auth, async (req, res) => {
     }
   );
   let user = await User.findById(req.user.id);
-  const userField = { avatar: `${__dirname}/../../public/users/${req.user.id}/pictures/${file.name}` };
+  const userField = { avatar: `/public/users/${req.user.id}/pictures/${file.name}` };
   if (user) {
     // Update
     user = await User.findOneAndUpdate(
