@@ -21,11 +21,10 @@ app.use("/api/upload", require("./routes/api/upload"));
 
 // Set static folder
 app.use(express.static("client/build"));
-app.use(express.static("public"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+// });
 
 const PORT = process.env.PORT || 5000;
 

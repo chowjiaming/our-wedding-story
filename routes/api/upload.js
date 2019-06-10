@@ -12,7 +12,7 @@ router.post("/", auth, async (req, res) => {
   const file = req.files.file;
   file.name = file.name.replace(/\s+/g, "");
   await file.mv(
-    `${__dirname}/../../public/users/${req.user.id}/pictures/${file.name}`,
+    `${__dirname}/../../client/public/users/${req.user.id}/pictures/${file.name}`,
     err => {
       if (err) {
         console.error(err);
@@ -22,7 +22,7 @@ router.post("/", auth, async (req, res) => {
   );
   let user = await User.findById(req.user.id);
   const userField = {
-    avatar: `/public/users/${req.user.id}/pictures/${file.name}`
+    avatar: `/users/${req.user.id}/pictures/${file.name}`
   };
   if (user) {
     // Update
@@ -31,7 +31,10 @@ router.post("/", auth, async (req, res) => {
       { $set: userField },
       { new: true }
     );
-    return res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+    return res.json({
+      fileName: file.name,
+      filePath: `/users/${req.user.id}/pictures/${file.name}`
+    });
   }
 });
 
