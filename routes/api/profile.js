@@ -153,9 +153,6 @@ router.put(
         .isEmpty(),
       check("from", "From date is required")
         .not()
-        .isEmpty(),
-      check("to", "To date is required")
-        .not()
         .isEmpty()
     ]
   ],
@@ -168,7 +165,6 @@ router.put(
       background,
       location,
       from,
-      to,
       openInvite,
       notes
     } = req.body;
@@ -177,7 +173,6 @@ router.put(
       background,
       location,
       from,
-      to,
       openInvite,
       notes
     };

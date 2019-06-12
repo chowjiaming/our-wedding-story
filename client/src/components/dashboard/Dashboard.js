@@ -37,21 +37,16 @@ const Dashboard = ({
         <Fragment>
           <DashboardActions />
           <Guestbook guestbook={profile.guestbook} />
-          <div className="my-2">
-            <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-user-minus" /> Delete My Account
-            </button>
-          </div>
           <h1 className="large text-primary">Your Wedding Stories</h1>
           <p className="lead">
             <i className="fas fa-user" /> Add your Wedding Story Here:
           </p>
-          <StoryForm />
           <div className="stories">
             {stories.map(story => (
               <StoryItem key={story._id} story={story} />
             ))}
           </div>
+          <StoryForm />
         </Fragment>
       ) : (
         <Fragment>
@@ -64,6 +59,11 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
+      <div className="my-2">
+        <button className="btn btn-danger" onClick={() => deleteAccount()}>
+          <i className="fas fa-user-minus" /> Delete My Account
+        </button>
+      </div>
     </Fragment>
   );
 };

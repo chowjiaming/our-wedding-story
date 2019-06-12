@@ -10,14 +10,13 @@ const AddExperience = ({ addGuestbook, history }) => {
     background: "",
     location: "",
     from: "",
-    to: "",
     openInvite: false,
     notes: ""
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
-  const { name, background, location, from, to, openInvite, notes } = formData;
+  const { name, background, location, from, openInvite, notes } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -89,16 +88,6 @@ const AddExperience = ({ addGuestbook, history }) => {
             />{" "}
             Open Invite
           </p>
-        </div>
-        <div className="form-group">
-          <h4>To Date</h4>
-          <input
-            type="date"
-            name="to"
-            value={to}
-            onChange={e => onChange(e)}
-            disabled={toDateDisabled ? "disabled" : ""}
-          />
         </div>
         <div className="form-group">
           <textarea

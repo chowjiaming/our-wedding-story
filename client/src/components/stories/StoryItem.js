@@ -73,7 +73,8 @@ StoryItem.propTypes = {
   auth: PropTypes.object.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
-  deleteStory: PropTypes.func.isRequired
+  deleteStory: PropTypes.func.isRequired,
+  showActions: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

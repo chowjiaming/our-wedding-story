@@ -11,12 +11,7 @@ const Guestbook = ({ guestbook, deleteGuestbook }) => {
       <td>{exp.name}</td>
       <td className="hide-sm">{exp.background}</td>
       <td>
-        <Moment format="YYYY/MM/DD">{moment.utc(exp.from)}</Moment> -{" "}
-        {exp.to === null ? (
-          " Now"
-        ) : (
-          <Moment format="YYYY/MM/DD">{moment.utc(exp.to)}</Moment>
-        )}
+        <Moment format="YYYY/MM/DD">{moment.utc(exp.from)}</Moment>
       </td>
       <td>
         <button

@@ -25,7 +25,6 @@ const EditProfile = ({
 
   useEffect(() => {
     getCurrentProfile();
-
     setFormData({
       bio: loading || !profile.bio ? "" : profile.bio,
       twitter: loading || !profile.social ? "" : profile.social.twitter,
@@ -34,6 +33,7 @@ const EditProfile = ({
       youtube: loading || !profile.social ? "" : profile.social.youtube,
       instagram: loading || !profile.social ? "" : profile.social.instagram
     });
+    // eslint-disable-next-line
   }, [loading, getCurrentProfile]);
 
   const { bio, twitter, facebook, linkedin, youtube, instagram } = formData;

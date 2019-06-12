@@ -8,9 +8,16 @@ import CommentForm from "components/story/CommentForm";
 import CommentItem from "components/story/CommentItem";
 import { getStory } from "actions/story";
 
-const Story = ({ getStory, story: { story, loading }, match }) => {
+const Story = ({
+  getStory,
+  story: { story, loading },
+  match: {
+    params: { id }
+  }
+}) => {
   useEffect(() => {
-    getStory(match.params.id);
+    getStory(id);
+    // eslint-disable-next-line
   }, [getStory]);
 
   return loading || story === null ? (
@@ -21,12 +28,16 @@ const Story = ({ getStory, story: { story, loading }, match }) => {
         Back To Stories
       </Link>
       <StoryItem story={story} showActions={false} />
-      <CommentForm storyId={story._id} />
       <div className="comments">
         {story.comments.map(comment => (
-          <CommentItem key={comment._id} comment={comment} storyId={story._id} />
+          <CommentItem
+            key={comment._id}
+            comment={comment}
+            storyId={story._id}
+          />
         ))}
       </div>
+      <CommentForm storyId={story._id} />
     </Fragment>
   );
 };
