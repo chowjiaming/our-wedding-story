@@ -20,7 +20,7 @@ app.use("/api/stories", require("./routes/api/stories"));
 app.use("/api/upload", require("./routes/api/upload"));
 
 // Set static folders
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.static("client/build"));
 
 app.get("*", (req, res) => {

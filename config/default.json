@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb://joefstack:pass123@ds235947.mlab.com:35947/our-story-dev",
+  "mongoURI": "mongodb://joefstack:pass123@ds135207.mlab.com:35207/devconnector-test",
   "jwtSecret": "secret"
 }
