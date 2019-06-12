@@ -19,12 +19,13 @@ app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/stories", require("./routes/api/stories"));
 app.use("/api/upload", require("./routes/api/upload"));
 
-// Set static folder
+// Set static folders
+app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use(express.static("client/build"));
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 const PORT = process.env.PORT || 5000;
 
